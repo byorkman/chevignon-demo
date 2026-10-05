@@ -1,0 +1,45 @@
+{
+  "records": [
+    {
+      "developerName": "Chevignon_Engagement",
+      "masterLabel": "Chevignon Engagement",
+      "category": "Engagement",
+      "externalDataTranFields": [
+        { "developerName": "eventId",       "masterLabel": "Event Id",         "dataType": "Text",     "isDataRequired": true, "primaryIndexOrder": 1 },
+        { "developerName": "deviceId",      "masterLabel": "Device Id",        "dataType": "Text",     "isDataRequired": true },
+        { "developerName": "dateTime",      "masterLabel": "Date Time",        "dataType": "DateTime", "isDataRequired": true },
+        { "developerName": "eventType",     "masterLabel": "Event Type",       "dataType": "Text",     "isDataRequired": true },
+        { "developerName": "category",      "masterLabel": "Category",         "dataType": "Text",     "isDataRequired": true },
+        { "developerName": "sessionId",     "masterLabel": "Session Id",       "dataType": "Text",     "isDataRequired": true },
+        { "developerName": "interactionName","masterLabel": "Interaction Name","dataType": "Text" },
+        { "developerName": "pageUrl",       "masterLabel": "Page URL",         "dataType": "Text" },
+        { "developerName": "sku",           "masterLabel": "SKU",              "dataType": "Text" },
+        { "developerName": "productName",   "masterLabel": "Product Name",     "dataType": "Text" },
+        { "developerName": "prodCategory",  "masterLabel": "Product Category", "dataType": "Text" },
+        { "developerName": "price",         "masterLabel": "Price",            "dataType": "Number" },
+        { "developerName": "currency",      "masterLabel": "Currency",         "dataType": "Text" },
+        { "developerName": "quantity",      "masterLabel": "Quantity",         "dataType": "Number" },
+        { "developerName": "orderId",       "masterLabel": "Order Id",         "dataType": "Text" },
+        { "developerName": "orderTotal",    "masterLabel": "Order Total",      "dataType": "Number" }
+      ]
+    },
+    {
+      "developerName": "Chevignon_Profile",
+      "masterLabel": "Chevignon Profile",
+      "category": "Profile",
+      "externalDataTranFields": [
+        { "developerName": "eventId",     "masterLabel": "Event Id",     "dataType": "Text",     "isDataRequired": true, "primaryIndexOrder": 1 },
+        { "developerName": "deviceId",    "masterLabel": "Device Id",    "dataType": "Text",     "isDataRequired": true },
+        { "developerName": "dateTime",    "masterLabel": "Date Time",    "dataType": "DateTime", "isDataRequired": true },
+        { "developerName": "eventType",   "masterLabel": "Event Type",   "dataType": "Text",     "isDataRequired": true },
+        { "developerName": "category",    "masterLabel": "Category",     "dataType": "Text",     "isDataRequired": true },
+        { "developerName": "sessionId",   "masterLabel": "Session Id",   "dataType": "Text",     "isDataRequired": true },
+        { "developerName": "isAnonymous", "masterLabel": "Is Anonymous", "dataType": "Text" },
+        { "developerName": "email",       "masterLabel": "Email",        "dataType": "Email" },
+        { "developerName": "customerId",  "masterLabel": "Customer Id",  "dataType": "Text" },
+        { "developerName": "firstName",   "masterLabel": "First Name",   "dataType": "Text" },
+        { "developerName": "loyaltyTier", "masterLabel": "Loyalty Tier", "dataType": "Text" }
+      ]
+    }
+  ]
+}
