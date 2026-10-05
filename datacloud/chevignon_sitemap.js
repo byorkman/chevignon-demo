@@ -15,6 +15,9 @@
  *  - user.attributes.eventType  = developerName del schema Profile
  *  - Campos custom planos y con el MISMO nombre que en el schema.
  *  - eventId, deviceId, sessionId, dateTime y category los rellena el SDK.
+ *  - NO usar nombres reservados del SDK como interaction.name ("Purchase", "Add To Cart",
+ *    "View Catalog Object"...): el SDK espera su estructura propia (order, lineItem...)
+ *    y descarta el evento sin avisar. Por eso la compra se llama "Order Completed".
  */
 
 (function () {
@@ -162,7 +165,7 @@
                 // El número de pedido (CHV-XXXXXXXX) aparece en pantalla justo después
                 setTimeout(() => {
                     const match = (document.body.textContent || "").match(/CHV-[A-Z0-9]+/);
-                    send("Purchase", {
+                    send("Order Completed", {
                         orderId: match ? match[0] : undefined,
                         orderTotal,
                         quantity,

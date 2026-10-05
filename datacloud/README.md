@@ -16,7 +16,7 @@ La web es una SPA (Next.js): el sitemap detecta los cambios de URL y escucha los
 | View Page | Engagement | Cada navegación que no sea ficha de producto |
 | View Product | Engagement | Navegación a `/producto/[id]` (datos del JSON-LD) |
 | Add to Cart | Engagement | El carrito gana unidades (ficha o botón "+" en `/carrito`) |
-| Purchase | Engagement | "Confirmar pedido" en `/checkout` (el carrito se vacía); `orderId` = `CHV-…` |
+| Order Completed | Engagement | "Confirmar pedido" en `/checkout` (el carrito se vacía); `orderId` = `CHV-…` |
 | Identity Login | Profile | Login en `/login` (email, customerId, firstName, loyaltyTier) |
 
 ## Pasos en Data Cloud
@@ -28,6 +28,8 @@ La web es una SPA (Next.js): el sitemap detecta los cambios de URL y escucha los
 5. Incrustar en la web el script del SDK (beacon) que da el conector.
 
 ## Pendiente / notas
+
+- No usar nombres reservados del SDK como nombre de interacción (`Purchase`, `Add To Cart`, `View Catalog Object`…): el SDK descarta el evento sin error. Ver `SalesforceInteractions.OrderInteractionName` / `CartInteractionName`.
 
 - Consentimiento fijo en OptIn: solo para demo. En producción leerlo del banner de cookies (RGPD).
 - `lib/personalization.ts` (pensado para Salesforce Personalization) también llama a `window.SalesforceInteractions.sendEvent` con eventos sin `eventType`; Data Cloud los descarta. Los eventos válidos para Data Cloud los envía este sitemap.
