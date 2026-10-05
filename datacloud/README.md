@@ -9,13 +9,15 @@ Configuración del conector web (Salesforce Interactions SDK) para Data Cloud.
 
 ## Eventos
 
-| Evento | Tipo | Disparo |
+La web es una SPA (Next.js): el sitemap detecta los cambios de URL y escucha los eventos propios de la web (`fpd:user-changed`, `fpd:cart-changed`), en lugar de depender de selectores CSS.
+
+| Evento | Schema | Disparo |
 |---|---|---|
-| View Page | Engagement | Cualquier página (por defecto) |
-| View Product | Engagement | URL con `/producto/` (datos del JSON-LD) |
-| Add to Cart | Engagement | Clic en botón con texto "Agregar al carrito" |
-| Purchase | Engagement | Página de confirmación de pedido |
-| Identity Login | Profile | Clic en `#btn-login` o submit de formulario con email |
+| View Page | Engagement | Cada navegación que no sea ficha de producto |
+| View Product | Engagement | Navegación a `/producto/[id]` (datos del JSON-LD) |
+| Add to Cart | Engagement | El carrito gana unidades (ficha o botón "+" en `/carrito`) |
+| Purchase | Engagement | "Confirmar pedido" en `/checkout` (el carrito se vacía); `orderId` = `CHV-…` |
+| Identity Login | Profile | Login en `/login` (email, customerId, firstName, loyaltyTier) |
 
 ## Pasos en Data Cloud
 
@@ -25,8 +27,9 @@ Configuración del conector web (Salesforce Interactions SDK) para Data Cloud.
 4. Crear los data streams del conector y mapear a DMOs (Individual, Contact Point Email, Product Browse Engagement, etc.).
 5. Incrustar en la web el script del SDK (beacon) que da el conector.
 
-## Pendiente de ajustar
+## Pendiente / notas
 
-- Selectores marcados con `AJUSTAR` en el sitemap: input de cantidad y página de confirmación (`orderId`, `orderTotal`).
 - Consentimiento fijo en OptIn: solo para demo. En producción leerlo del banner de cookies (RGPD).
-- Validar en DevTools → Network que los nombres de campo del payload coinciden con el schema.
+- `lib/personalization.ts` (pensado para Salesforce Personalization) también llama a `window.SalesforceInteractions.sendEvent` con eventos sin `eventType`; Data Cloud los descarta. Los eventos válidos para Data Cloud los envía este sitemap.
+- `customerId` lo genera `lib/auth.ts` con `btoa(email).slice(0, 10)`: emails con el mismo inicio pueden compartir ID. Vale para demo.
+- Validar en DevTools → Network que los payloads llegan con los nombres del schema.
